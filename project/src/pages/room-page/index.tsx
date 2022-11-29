@@ -1,2 +1,1 @@
-import RoomPage from './room-page';
-export default RoomPage;
+export {default as RoomPage} from './room-page';

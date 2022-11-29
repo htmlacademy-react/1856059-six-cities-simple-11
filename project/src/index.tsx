@@ -1,20 +1,15 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import App from './components/app/app';
+import { offers } from './mocks/offers';
+// import { reviews } from './mocks/rewiers';
+
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement,
 );
 
-export type MainPageProps = {
-  placesCount: number;
-}
-
-const mainPageProps: MainPageProps = {
-  placesCount: 5
-};
-
 root.render(
   <React.StrictMode>
-    <App {...mainPageProps} />
+    <App offers = { offers } /*reviews = { reviews }*/ />
   </React.StrictMode>,
 );
