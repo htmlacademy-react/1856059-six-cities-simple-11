@@ -1,16 +1,22 @@
-import { MainPageProps } from '../..';
-import Card from '../../components/card/card';
+import { CardList } from '../../components/card-list';
+import { AppRoutes } from '../../router';
+import { Link } from 'react-router-dom';
+import { Offers } from '../../types/offer';
 
-function MainPage({placesCount}: MainPageProps): JSX.Element {
+type MainPageProps = {
+  offers: Offers;
+}
+
+function MainPage(props: MainPageProps): JSX.Element {
   return (
     <>
       <header className="header">
         <div className="container">
           <div className="header__wrapper">
             <div className="header__left">
-              <a className="header__logo-link header__logo-link--active" href='/'>
+              <Link className="header__logo-link header__logo-link--active" to={AppRoutes.MAIN}>
                 <img className="header__logo" src="img/logo.svg" alt="6 cities logo" width="81" height="41" />
-              </a>
+              </Link>
             </div>
             <nav className="header__nav">
               <ul className="header__nav-list">
@@ -37,34 +43,34 @@ function MainPage({placesCount}: MainPageProps): JSX.Element {
           <section className="locations container">
             <ul className="locations__list tabs__list">
               <li className="locations__item">
-                <a className="locations__item-link tabs__item" href="#todo">
+                <Link className="locations__item-link tabs__item" to={AppRoutes.MAIN}>
                   <span>Paris</span>
-                </a>
+                </Link>
               </li>
               <li className="locations__item">
-                <a className="locations__item-link tabs__item" href="#todo">
+                <Link className="locations__item-link tabs__item" to={AppRoutes.MAIN}>
                   <span>Cologne</span>
-                </a>
+                </Link>
               </li>
               <li className="locations__item">
-                <a className="locations__item-link tabs__item" href="#todo">
+                <Link className="locations__item-link tabs__item" to={AppRoutes.MAIN}>
                   <span>Brussels</span>
-                </a>
+                </Link>
               </li>
               <li className="locations__item">
-                <a className="locations__item-link tabs__item tabs__item--active" href='#tudo'>
+                <Link className="locations__item-link tabs__item tabs__item--active" to={AppRoutes.MAIN}>
                   <span>Amsterdam</span>
-                </a>
+                </Link>
               </li>
               <li className="locations__item">
-                <a className="locations__item-link tabs__item" href="#todo">
+                <Link className="locations__item-link tabs__item" to={AppRoutes.MAIN}>
                   <span>Hamburg</span>
-                </a>
+                </Link>
               </li>
               <li className="locations__item">
-                <a className="locations__item-link tabs__item" href="#todo">
+                <Link className="locations__item-link tabs__item" to={AppRoutes.MAIN}>
                   <span>Dusseldorf</span>
-                </a>
+                </Link>
               </li>
             </ul>
           </section>
@@ -73,7 +79,7 @@ function MainPage({placesCount}: MainPageProps): JSX.Element {
           <div className="cities__places-container container">
             <section className="cities__places places">
               <h2 className="visually-hidden">Places</h2>
-              <b className="places__found">{placesCount} places to stay in Amsterdam</b>
+              <b className="places__found"> {props.offers.length} places to stay in Amsterdam</b>
               <form className="places__sorting" action="#" method="get">
                 <span className="places__sorting-caption">Sort by</span>
                 <span className="places__sorting-type" tabIndex={0}>
@@ -90,11 +96,7 @@ function MainPage({placesCount}: MainPageProps): JSX.Element {
                 </ul>
               </form>
               <div className="cities__places-list places__list tabs__content">
-                <Card/>
-                <Card/>
-                <Card/>
-                <Card/>
-                <Card/>
+                <CardList offers={ props.offers } />
               </div>
             </section>
             <div className="cities__right-section">
